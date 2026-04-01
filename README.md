@@ -1,69 +1,50 @@
-# React + TypeScript + Vite
+# vite-practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite を使った学習用リポジトリです。  
+モダンなフロントエンド開発の基本的な構成や機能を実際に手を動かしながら学ぶことを目的としています。
 
-Currently, two official plugins are available:
+## 技術スタック
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **フレームワーク**: React 19 + TypeScript
+- **ビルドツール**: Vite 7
+- **スタイリング**: Tailwind CSS 4
+- **UIコンポーネント**: shadcn/ui (Radix UI)
+- **ルーティング**: React Router v7
+- **アイコン**: Lucide React
+- **リンター**: ESLint
 
-## Expanding the ESLint configuration
+## 実装済みの機能
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- サインイン・サインアップフォーム
+- 認証（ログイン / ログアウト / ルート保護）
+- 認証後の自動遷移
+- ダッシュボード（サイドバー付き）
+- ユーザー管理
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## プロジェクト構成
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/     # UIコンポーネント
+│   └── ui/         # shadcn/ui ベースコンポーネント
+├── hooks/          # カスタムフック (useAuth, useMobile)
+├── lib/            # ユーティリティ関数
+├── routes/         # ルート定義
+└── utils/          # 認証ローダーなど
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## セットアップ
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
+
+## スクリプト
+
+| コマンド | 説明 |
+| --- | --- |
+| `npm run dev` | 開発サーバーの起動 |
+| `npm run build` | プロダクションビルド |
+| `npm run lint` | ESLint によるコードチェック |
+| `npm run preview` | ビルド結果のプレビュー |
